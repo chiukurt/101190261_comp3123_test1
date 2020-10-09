@@ -28,25 +28,30 @@ function removeFiles() {
             fs.rmdir(directory, (err) => {
                 if (err) throw err;
             });
-        }, 1000);
-
+        }, 500);
     }
 }
 
 function addFiles() {
-    fs.mkdir(path.join(__dirname, 'Logs'), (err) => {
-        if (err) {
-            return console.error(err);
-        }
-        console.log('Directory created successfully!');
-    });
-
-    for (i = 0; i < 10; i++) {
-        console.log('log' + i + '.txt');
-        fs.writeFile('Logs/log' + i + '.txt', "Some random text", (err) => {
-            if (err) throw err;
+    setTimeout(() => {
+        fs.mkdir(path.join(__dirname, 'Logs'), (err) => {
+            if (err) {
+                return console.error(err);
+            }
         });
-    }
+    }, 1000);
+
+    // Wait for system to recognize Logs as been created
+    setTimeout(() => {
+        process.chdir("Logs");
+        for (i = 0; i < 10; i++) {
+            console.log('log' + i + '.txt');
+            fs.writeFile('log' + i + '.txt', "Some random text", (err) => {
+                if (err) throw err;
+            });
+        }
+    }, 1500);
+   
 }
 
 removeFiles();
