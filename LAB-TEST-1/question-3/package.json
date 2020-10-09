@@ -1,0 +1,16 @@
+{
+  "name": "LAB-TEST-1-question-3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "question-3.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node question-3.js"
+  },
+  "keywords": [],
+  "author": "Kurt Chiu 101190261",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
